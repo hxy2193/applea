@@ -1,0 +1,18 @@
+$m-size:1070px;
+@mixin onm{
+  @media screen and (max-width:$m-size){
+    @content;
+  }
+}
+$s-size:736px;
+@mixin ons{
+  @media screen and (max-width:$s-size){
+    @content;
+  }
+}
+$l-size:460px;
+@mixin onl{
+  @media screen and (max-width:$l-size){
+    @content;
+  }
+}

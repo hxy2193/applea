@@ -1,0 +1,683 @@
+@import "xiangying";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{
+  margin:0;
+  padding:0;
+  font-family:"Myriad Set Pro","Helvetica Neue","Helvetica","Arial","sans-serif";
+}
+li,ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+body{
+  background: #f2f2f2;
+  overflow-x: hidden;
+}
+//header.............................................
+.header{
+  width:100%;
+  background:rgba(0,0,0,0.8);
+  position: absolute;
+  z-index: 10;
+  top:0;
+  left:0;
+  .header-inner{
+    max-width: 1000px;
+    margin: 0 auto;
+    .phone-list{
+      height: 48px;
+      text-align: justify;
+      display: none;
+      #rotate-box{
+        display: block;
+        width:48px;
+        height:48px;
+        position: absolute;
+        background: transparent;
+        top:0;
+        left:0;
+        span{
+          display: block;
+          width: 17px;
+          height: 1px;
+          background: white;
+          transform: rotateZ(0deg);
+          transform-origin: 20% 20%;
+          transition: all 0.6s ease;
+        }
+        .heng1{
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin: auto;
+          top: 20px;
+        }
+        .heng2{
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin: auto;
+          bottom: 20px;
+        }
+        &.active{
+          .heng1{
+            transition: all 0.6s ease;
+            transform: rotateZ(45deg);
+            transform-origin: 20% 20%;
+          }
+          .heng2{
+            transition: all 0.6s ease;
+            transform: rotateZ(-45deg);
+            transform-origin: 20% 20%;
+          }
+        }
+      }
+      .bag_small{
+        width: 19px;
+        height: 48px;
+        padding: 0 16px;
+      }
+      @include ons{
+        display: block;
+      }
+      &::after{
+        content: '';
+        width: 100%;
+        height:0;
+        display: inline-block;
+      }
+      .phone-item{
+        display: inline-block;
+        a{
+          display: block;
+          height: 48px;
+        }
+      }
+    }
+    .nav-list{
+      height:44px;
+      text-align: justify;
+      display: block;
+      @include ons{
+        display: none;
+      }
+      &::after{
+        content: '';
+        width:100%;
+        height:0;
+        line-height:0;
+        font-style: 0;
+        display: inline-block;
+      }
+      .nav-item{
+        display: inline-block;
+        a{
+          display: block;
+          height: 44px;
+          .chahao{
+            background-color: transparent;
+            border:none;
+            width: 38px;
+            height: 44px;
+            color:#fff;
+            font-size: 18px;
+            line-height: 26px;
+            position: absolute;
+            z-index: 3;
+            cursor: pointer;
+            .leftspan{
+              right:12px;
+              width: 1px;
+              height:18px;
+              background-clip: border-box;
+              background-color: #fff;
+              cursor: pointer;
+              color: #fff;
+              display: block;
+              position: absolute;
+              top:11px;
+              z-index: 1;
+            }
+            .rightspan{
+              width: 1px;
+              height:18px;
+              background-clip: border-box;
+              background-color: #fff;
+              cursor: pointer;
+              color: #fff;
+              display: block;
+              position: absolute;
+              left:12px;
+              top:11px;
+              z-index: 55555;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.header .search-box{
+  width: 682px;
+  height:auto;
+  position: absolute;
+  left:0;
+  right:0;
+  margin:0 auto;
+  overflow: hidden;
+  .search-box-inner{
+    width: 100%;
+    height:44px;
+    background: transparent;
+    transition: transform 1s ease,opacity .5s ease;
+    opacity: 0;
+    transform: translate3d(370px,0,0);
+    .fdj{
+      width: 40px;
+      height:44px;
+      background: url(image/image_large.svg) no-repeat center center;
+      float: left;
+    }
+    input{
+      color: #fff;
+      font-size:14px;
+      outline: none;
+      line-height:44px;
+      border:none;
+      background: transparent;
+      float: left;
+    }
+  }
+  .card{
+    width: 682px;
+    height:230px;
+    background: #fff;
+    opacity: 0;
+    h3{
+      font-size: 12px;
+      color: #999;
+      font-weight: normal;
+      margin-left: 40px;
+      padding-top: 24px;
+    }
+    li{
+      height:30px;
+      transform: translate3d(300px,0,0);
+      opacity: 0;
+      line-height:30px;
+      padding-left: 56px;
+      margin: 5px 8px;
+      &:hover{
+        background: #f2f2f2;
+        color: #0170c9;
+      }
+    }
+    a{
+      display: block;
+      height:30px;
+      line-height:30px;
+      font-size: 16px;
+      color: #999;
+      text-decoration: none;
+      &:hover{
+        color: #0170c9;
+      }
+    }
+    @for $i from 1 through 6{
+      li:nth-child(#{$i}){
+        transition: transform .8s ease ($i/2)*0.1s;
+      }
+    }
+  }
+}
+.searching{
+   .menu{
+    transition: transform .8s ease;
+    transform: scale(0,0);
+  }
+  .bag{
+    background: none;
+  }
+  .chahao .leftspan{
+    transition: transform .3s ease;
+    transform-origin: 0 100%;
+    transform: rotate(-45deg);
+  }
+  .chahao .rightspan{
+    transition: transform .3s ease;
+    transform-origin: 100% 100%;
+    transform: rotate(45deg);
+  }
+  .search-box .search-box-inner{
+    opacity: 1;
+    transform: translate3d(0,0,0);
+  }
+  .search-box .card li{
+    opacity:1;
+    transform: translate3d(0,0,0);
+  }
+  .search-box .card{
+    opacity: 1;
+  }
+}
+.menu{
+  transition: transform .8s ease;
+  transform: scale(1,1);
+}
+$nav-map:(
+        "tubiao":20px,
+        "mac":31px,
+        "ipad":30px,
+        "iphone":48px,
+        "watchs":44px,
+        "tv":20px,
+        "Music":40px,
+        "support":57px,
+        "sousuo":20px,
+        "bag":18px
+);
+$small-map:(
+        "daohang":48px,
+        "tubiao_small":21px,
+        "bag_small":19px,
+);
+@each $c in map_keys($nav-map){
+.#{$c}{
+  transition: opacity .3s ease;
+  width: map_get($nav-map,$c);
+  background: url("image/" + $c + ".svg") no-repeat center center;
+  &:hover{
+    opacity: 0.5;
+  }
+}
+}
+@each $i in map_keys($small-map){
+  .#{$i}{
+    transition: opacity .3s ease;
+    width: map_get($small-map,$i);
+    background: url("image/" + $i + ".svg") no-repeat center center;
+    &:hover{
+      opacity: 0.5;
+    }
+  }
+}
+
+//banner.......................................................
+.carousel{
+  position: relative;
+  min-height: 130px;
+  height: calc(100vh - 76px);
+  overflow: hidden;
+  //max-height: 590px;
+  .gallery-slide-wrapper{
+    width: 100%;
+    height:100%;
+    background: #000;
+    position: relative;
+    a{
+      display: none;
+      width: 100%;
+      height:100%;
+      position: absolute;
+      top:0;
+      left:0;
+      transform: translate3d(0,0,0);
+      background-repeat: no-repeat;
+      background-position: bottom center;
+      background-size: contain;
+      transition: transform 1s ease;
+      &.active{
+        z-index: 1;
+        display: block;
+        transform: translate3d(0,0,0);
+      }
+    }
+    a.right{
+      z-index: 2;
+      display: block;
+      transform: translate3d(100%,0,0);
+    }
+    a.leave{
+      transform: translate3d(-100px,0,0);
+      display: block;
+    }
+    a.enter{
+      animation: enter 1s ease both;
+      display: block;
+    }
+  }
+  @keyframes enter {
+    0%{
+      transform: translate3d(-100px,0,0);
+    }
+    100%{
+      transform: translate3d(0,0,0);
+    }
+  }
+  $banner-map:(
+          "iphone-7":rgb(000,000,000),
+          "watch":rgb(243,243,243),
+          "airpods":rgb(255,255,255),
+          "event":rgb(000,000,000)
+  );
+  @each $q in map_keys($banner-map){
+    .#{$q}{
+      background-color: map_get($banner-map,$q);
+      background-image: url("image/" + $q + "_large.jpg");
+      @include onm {
+        background-image: url("image/" + $q + "_square_large.jpg");
+      }
+      @include ons{
+        background-image:url("image/" + $q + "_portrait_small.jpg");
+      }
+    }
+  }
+}
+.tab-list{
+  position: absolute;
+  bottom: 20px;
+  z-index:1000000;
+  width: 100%;
+  text-align: center;
+  .dot-nav{
+    display: inline-block;
+    &::after{
+      content: '';
+      clear: both;
+      height:0;
+    }
+  }
+  .dot{
+    cursor: pointer;
+    margin: 0 5px;
+    height:2px;
+    //background: rgba(128,128,128,0.2);
+    background:#2d2e30;
+    background-clip: content-box;
+    padding: 10px 0;
+    float: left;
+    width: 50px;
+    &.active{
+      background-color: purple;
+    }
+  }
+}
+
+//advertisement.........................................................
+.row{
+  overflow:hidden;
+}
+.col{
+  float:left;
+}
+@for $i from 1 through 12{
+  .d-#{$i}{
+    width:percentage($i/12);
+  }
+}
+@include onm{
+  @for $i from 1 through 12{
+    .m-#{$i}{
+      width:percentage($i/12);
+    }
+  }
+}
+@include ons{
+  @for $i from 1 through 12{
+    .s-#{$i}{
+      width:percentage($i/12);
+    }
+  }
+}
+.ads{
+  overflow: hidden;
+}
+.ads li{
+  height:200px;
+  box-sizing:border-box;
+  border-top: 2px solid #fff;
+  border-right:2px solid #fff;
+  border-bottom: 2px solid #fff;
+  @include ons{
+    border-bottom: none;
+    border-right: none;
+  }
+}
+$ads-list:"watchos","music_festival","ios","macos_sierra";
+@each $ad in $ads-list{
+  .#{$ad}{
+    background:url("image/" + $ad + "_large.jpg") no-repeat center center;
+    @include onm {
+      background: url("image/" + $ad + "_medium.jpg") no-repeat center center;
+    }
+    @include ons{
+      background:url("image/" + $ad + "_small.jpg") no-repeat center center;
+    }
+  }
+}
+//footer.........................................................................
+.footer{
+  max-width: 980px;
+  height:240px;
+  margin: 0 auto;
+  padding: 20px 0 0 0;
+  box-sizing:border-box;
+  @include ons{
+    width: auto;
+    height: auto;
+  }
+  .directory{
+    width: 20%;
+    height: 220px;
+    float: left;
+    @include ons{
+      width: 100%;
+      height: auto;
+    }
+    h3{
+      font-size: 12px;
+      color: rgb(51,51,51);
+      line-height: 20px;
+      font-weight: 600;
+      @include ons{
+        height: 38px;
+        line-height: 38px;
+        font-size: 14px;
+        color: rgb(51,51,51);
+        background: #f2f2f2;
+        border-bottom: 1px solid rgb(227, 227, 227);
+        margin:0 18px 0 18px;
+        font-weight: normal;
+        position: relative;
+      }
+      .more{
+        display: none;
+        @include ons{
+          display: block;
+          position: absolute;
+          right:8px;
+          top:0;
+          z-index: 2333;
+          font-weight:normal;
+          cursor: pointer;
+        }
+      }
+    }
+    .xiala{
+      @include ons{
+        display: none;
+      }
+    }
+    .atext{
+      font-size: 12px;
+      color: rgb(102,102,102);
+      width: 100%;
+      display: block;
+      line-height: 20px;
+      text-align: left;
+      @include ons{
+        height: 30px;
+        width: 100%;
+        display: block;
+        color: rgb(102,102,102);
+        font-size: 12px;
+        line-height: 30px;
+        padding:0 28px;
+      }
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+}
+.section{
+  max-width: 980px;
+  height: 52px;
+  padding:20px 0 24px 0;
+  margin:0 auto;
+  @include ons{
+    width: auto;
+    height:105px;
+    padding: 20px 0 0 0;
+    float: left;
+  }
+  .shop{
+    width: 100%;
+    height:20px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(227,227,227);
+    color: rgb(153,153,153);
+    font-size: 12px;
+    line-height:20px;
+    margin-bottom: 6px;
+    @include ons{
+      padding: 0 16px 6px 16px;
+      margin-bottom: 6px;
+      line-height: 20px;
+      border: none;
+    }
+    @include onl{
+      width: 100%;
+      height: 40px;
+      padding: 0 16px 6px 16px;
+      margin-bottom: 6px;
+      border: none;
+    }
+    li{
+      float: left;
+      @include ons{
+        float: left;
+      }
+      @include onl{
+        width: 100%;
+        height: 20px;
+        margin-bottom: 6px;
+        border: none;
+      }
+    }
+    a{
+      color: rgb(0,112,201);
+      font-size: 12px;
+      display: inline;
+      line-height: 20px;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+  .locale{
+    box-sizing: content-box;
+    color: rgb(153,153,153);
+    float: right;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    @include ons{
+      width: 100%;
+      height: 20px;
+      padding: 0 16px 6px 16px;
+      margin-bottom: 6px;
+      line-height: 20px;
+      float: left;
+    }
+    a{
+      color: #666;
+    }
+    span{
+      background-repeat: no-repeat;
+      background-size: 16px;
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background-image: url(image/16.png);
+      padding-right: 5px;
+      background-position: left center;
+      cursor: pointer;
+      float: left;
+      margin-top: 1px;
+    }
+  }
+  .copyright{
+    width: 980px;
+    height:20px;
+    color: rgb(153,153,153);
+    line-height: 20px;
+    .actext{
+      width: auto;
+      height: 20px;
+      line-height: 20px;
+      margin-right: 26px;
+      float: left;
+      font-size: 12px;
+      @include ons{
+        width: 100%;
+        height: 20px;
+        padding: 0 16px 0 16px;
+        line-height: 20px;
+        float: left;
+      }
+    }
+    .aclinks{
+      width: auto;
+      height: 20px;
+      margin-right: 26px;
+      float: left;
+      @include ons{
+        width: 100%;
+        height: 20px;
+        padding: 0 16px 6px 16px;
+        margin-bottom: 6px;
+        line-height: 20px;
+        float: left;
+      }
+      @include onl{
+        height: 40px;
+      }
+      li{
+        float: left;
+        @include ons{
+          float: left;
+        }
+        @include onl{
+          width: 100%;
+          height: 20px;
+        }
+      }
+      a{
+        display: inline-block;
+        width: auto;
+        height: auto;
+        padding-right: 12px;
+        margin-right: 10px;
+        border-right: 1px solid rgb(214,214,214);
+        color: rgb(102,102,102);
+        font-size: 12px;
+        line-height: 14px;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
